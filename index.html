@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-t-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda do Medidor</title>
+    
+    <!-- PWA Manifest and Theme -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f3f4f6;
+      }
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+       /* Print specific styles */
+      @media print {
+        .no-print {
+          display: none !important;
+        }
+         @page {
+          /* Define a orientação da página para paisagem (horizontal) por padrão */
+          size: A4 landscape;
+          margin: 0.5cm;
+        }
+        body {
+          background-color: #fff !important;
+          font-size: 7pt;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        #printable-area {
+          box-shadow: none !important;
+          padding: 0 !important;
+          margin: 0 !important;
+          border: none !important;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 7pt;
+        }
+        th, td {
+          border: 1px solid #ddd !important;
+          padding: 2px 4px !important;
+          text-align: left;
+        }
+        thead {
+          display: table-header-group;
+        }
+        th {
+          background-color: #f2f2f2 !important;
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
+        /* Break content inside page */
+        tr {
+            page-break-inside: avoid;
+        }
+        /* Ensure colors for status print correctly */
+        .text-amber-600 {
+            color: #d97706 !important;
+        }
+        .text-emerald-700 {
+            color: #047857 !important;
+        }
+      }
+      /* Animation for splash screen */
+      @keyframes pulse-subtle {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 20px 10px rgba(59, 130, 246, 0);
+        }
+      }
+      .animate-pulse-subtle {
+        animation: pulse-subtle 2.5s ease-in-out infinite;
+      }
+
+      /* New logo bounce animation */
+      @keyframes logo-bounce-in {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        80% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .animate-logo-bounce-in {
+        animation: logo-bounce-in 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      /* Transition Animations */
+      @keyframes splash-fade-out {
+        from { opacity: 1; }
+        to { opacity: 0; pointer-events: none; }
+      }
+      .animate-splash-fade-out {
+        animation: splash-fade-out 0.5s ease-in-out forwards;
+      }
+
+      @keyframes content-fade-in {
+        from { 
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to { 
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-content-fade-in {
+        animation: content-fade-in 0.7s ease-out forwards;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.39.7"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
